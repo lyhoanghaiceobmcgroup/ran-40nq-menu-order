@@ -114,6 +114,36 @@ npx supabase link --project-ref mrbupzghoxuzntenmazv
 npx supabase functions deploy
 ```
 
+## 📤 Deploy lên GitHub
+
+### ✅ Đã cấu hình Git với tài khoản:
+- **Username:** lyhoanghaiceobmcgroup
+- **Email:** lyhoanghaiceo@gmail.com
+- **Repository:** https://github.com/lyhoanghaiceobmcgroup/ran-40nq-menu-order.git
+
+### Bước 1: Tạo GitHub Repository
+1. Đăng nhập GitHub với tài khoản: **lyhoanghaiceobmcgroup**
+2. Truy cập https://github.com/new
+3. Đặt tên repository: `ran-40nq-menu-order`
+4. Chọn **Public** (để dễ chia sẻ)
+5. **KHÔNG** chọn "Initialize with README" (vì đã có code)
+6. Click **Create repository**
+
+### Bước 2: Push Code lên GitHub
+```bash
+# Code đã được chuẩn bị sẵn, chỉ cần push
+git push -u origin main
+```
+
+**Lưu ý:** Nếu gặp lỗi authentication, có thể cần:
+- Tạo Personal Access Token trên GitHub
+- Hoặc sử dụng GitHub Desktop để đăng nhập
+
+### Bước 3: Xác nhận Deploy thành công
+- Kiểm tra code đã xuất hiện trên: https://github.com/lyhoanghaiceobmcgroup/ran-40nq-menu-order
+- Copy URL repository để chia sẻ với team
+- Setup GitHub Pages nếu muốn host static version
+
 ## 🚀 Tiếp theo
 
 Sau khi hoàn thành các bước trên:
