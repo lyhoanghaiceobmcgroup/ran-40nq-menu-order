@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add RAN Tokens</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <h1>Add RAN Tokens</h1>
+    <div id="result"></div>
+    
+    <script>
+        const SUPABASE_URL = "https://mrbupzghoxuzntenmazv.supabase.co";
+        const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN5cGlscWxscmRqZmhjZHpxbWRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI0NjU1NzIsImV4cCI6MjA2ODA0MTU3Mn0.nNwN4dyd_PbnhBy1MFe6muM0z8ST_img2EzuOuniHas";
+        
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        
+        async function addRanTokens() {
+            try {
+                const resultDiv = document.getElementById('result');
+                resultDiv.innerHTML = 'Processing...';
+                
+                // Call the edge function
+                const { data, error } = await supabase.functions.invoke('add-ran-tokens', {
+                    body: {
+                        userPhone: '0826999923',
+                        amount: 500000,
+                        reference: 'Manual addition for user Hai'
+                    }
+                });
+                
+                if (error) {
+                    resultDiv.innerHTML = `<div style="color: red;">Error: ${error.message}</div>`;
+                    console.error('Error:', error);
+                    return;
+                }
+                
+                if (data.success) {
+                    resultDiv.innerHTML = `
+                        <div style="color: green;">
+                            <h3>✅ Success!</h3>
+                            <p>${data.message}</p>
+                            <p><strong>Phone:</strong> ${data.wallet.user_phone}</p>
+                            <p><strong>Balance:</strong> ${data.wallet.balance_ran.toLocaleString()} RAN</p>
+                            <p><strong>Total Earned:</strong> ${data.wallet.total_earned_ran.toLocaleString()} RAN</p>
+                            <p><strong>Updated:</strong> ${new Date(data.wallet.updated_at).toLocaleString()}</p>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `<div style="color: red;">Error: ${data.error}</div>`;
+                }
+                
+            } catch (error) {
+                document.getElementById('result').innerHTML = `<div style="color: red;">Unexpected error: ${error.message}</div>`;
+                console.error('Unexpected error:', error);
+            }
+        }
+        
+        // Auto-run when page loads
+        window.onload = addRanTokens;
+    </script>
+</body>
+</html>

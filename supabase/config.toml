@@ -1,0 +1,19 @@
+project_id = "mrbupzghoxuzntenmazv"
+
+[functions.voucher-purchase]
+verify_jwt = false
+
+[functions.mb-webhook] 
+verify_jwt = false
+
+[functions.wallet-status]
+verify_jwt = false
+
+[functions.telegram-order]
+verify_jwt = false
+
+[functions.telegram-payment-webhook]
+verify_jwt = false
+
+[functions.add-ran-tokens]
+verify_jwt = false
