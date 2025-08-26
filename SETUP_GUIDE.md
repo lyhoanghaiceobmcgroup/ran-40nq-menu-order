@@ -151,6 +151,49 @@ Sau khi hoàn thành các bước trên:
 2. Deploy lên production
 3. Kiểm tra tất cả Telegram integrations hoạt động đúng
 
+## 🚀 Deploy lên Vercel
+
+### Bước 1: Tạo tài khoản Vercel
+1. Truy cập [vercel.com](https://vercel.com)
+2. Đăng ký/đăng nhập bằng GitHub account: `lyhoanghaiceobmcgroup`
+3. Authorize Vercel truy cập GitHub repositories
+
+### Bước 2: Import GitHub Repository
+1. Click "New Project" trên Vercel dashboard
+2. Import repository: `lyhoanghaiceobmcgroup/ran-40nq-menu-order`
+3. Configure project settings:
+   - **Framework Preset**: Vite
+   - **Root Directory**: `./` (default)
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+
+### Bước 3: Cấu hình Environment Variables
+Thêm các biến môi trường sau trong Vercel:
+```
+SUPABASE_URL=https://mrbupzghoxuzntenmazv.supabase.co
+SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+TELEGRAM_BOT_TOKEN=your_telegram_bot_token
+TELEGRAM_AUTH_CHAT_ID=-4936541799
+TELEGRAM_ORDER_CHAT_ID=-4882156924
+TELEGRAM_VOUCHER_CHAT_ID=-4871031372
+```
+
+### Bước 4: Deploy
+1. Click "Deploy" để bắt đầu deployment
+2. Vercel sẽ tự động build và deploy project
+3. Sau khi hoàn thành, bạn sẽ nhận được URL production
+
+### Bước 5: Auto-deployment
+- Vercel tự động deploy mỗi khi có commit mới push lên `main` branch
+- Mỗi pull request sẽ tạo preview deployment
+- Production deployment chỉ từ `main` branch
+
+### Bước 6: Custom Domain (Tùy chọn)
+1. Trong Vercel project settings
+2. Vào tab "Domains"
+3. Thêm custom domain của bạn
+4. Cấu hình DNS records theo hướng dẫn
+
 ## 📞 Hỗ trợ
 
 Nếu gặp vấn đề:
@@ -158,6 +201,7 @@ Nếu gặp vấn đề:
 2. Kiểm tra GitHub repository đã tạo thành công
 3. Đảm bảo có quyền truy cập Supabase project
 4. Verify Telegram bot tokens và chat IDs
+5. Kiểm tra Vercel build logs nếu deployment thất bại
 
 ---
 
